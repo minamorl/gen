@@ -1,18 +1,18 @@
 import type { GeneratedFile, GeneratorContext, Plugin } from "../types.js";
 
 export const pythonRuff: Plugin<"python"> = {
-	id: "python-ruff",
-	name: "Ruff",
-	description: "Ruff linter and formatter for Python",
-	language: "python",
-	category: "linter",
-	async getFiles(
-		_context: GeneratorContext<"python">,
-	): Promise<GeneratedFile[]> {
-		return [
-			{
-				path: "ruff.toml",
-				content: `line-length = 100
+    id: "python-ruff",
+    name: "Ruff",
+    description: "Ruff linter and formatter for Python",
+    language: "python",
+    category: "linter",
+    async getFiles(
+        _context: GeneratorContext<"python">,
+    ): Promise<GeneratedFile[]> {
+        return [
+            {
+                path: "ruff.toml",
+                content: `line-length = 100
 target-version = "py312"
 
 [lint]
@@ -35,7 +35,7 @@ ignore = [
 quote-style = "double"
 indent-style = "space"
 `,
-			},
-		];
-	},
+            },
+        ];
+    },
 };

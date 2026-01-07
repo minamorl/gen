@@ -1,16 +1,18 @@
 import type { GeneratedFile, GeneratorContext, Plugin } from "../types.js";
 
 export const rustGithubActions: Plugin<"rust"> = {
-	id: "rust-github-actions",
-	name: "GitHub Actions",
-	description: "GitHub Actions CI/CD for Rust",
-	language: "rust",
-	category: "ci",
-	async getFiles(_context: GeneratorContext<"rust">): Promise<GeneratedFile[]> {
-		return [
-			{
-				path: ".github/workflows/ci.yml",
-				content: `name: CI
+    id: "rust-github-actions",
+    name: "GitHub Actions",
+    description: "GitHub Actions CI/CD for Rust",
+    language: "rust",
+    category: "ci",
+    async getFiles(
+        _context: GeneratorContext<"rust">,
+    ): Promise<GeneratedFile[]> {
+        return [
+            {
+                path: ".github/workflows/ci.yml",
+                content: `name: CI
 
 on:
   push:
@@ -48,7 +50,7 @@ jobs:
       - name: Test
         run: cargo test --verbose
 `,
-			},
-		];
-	},
+            },
+        ];
+    },
 };

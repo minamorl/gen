@@ -1,18 +1,18 @@
 import type { GeneratedFile, GeneratorContext, Plugin } from "../types.js";
 
 export const pythonGithubActions: Plugin<"python"> = {
-	id: "python-github-actions",
-	name: "GitHub Actions",
-	description: "GitHub Actions CI/CD for Python",
-	language: "python",
-	category: "ci",
-	async getFiles(
-		_context: GeneratorContext<"python">,
-	): Promise<GeneratedFile[]> {
-		return [
-			{
-				path: ".github/workflows/ci.yml",
-				content: `name: CI
+    id: "python-github-actions",
+    name: "GitHub Actions",
+    description: "GitHub Actions CI/CD for Python",
+    language: "python",
+    category: "ci",
+    async getFiles(
+        _context: GeneratorContext<"python">,
+    ): Promise<GeneratedFile[]> {
+        return [
+            {
+                path: ".github/workflows/ci.yml",
+                content: `name: CI
 
 on:
   push:
@@ -44,7 +44,7 @@ jobs:
       - name: Test
         run: uv run pytest
 `,
-			},
-		];
-	},
+            },
+        ];
+    },
 };

@@ -1,21 +1,21 @@
 import type { GeneratedFile, GeneratorContext, Plugin } from "../types.js";
 
 export const pythonCore: Plugin<"python"> = {
-	id: "python-core",
-	name: "Python Core",
-	description: "Core Python project setup with uv",
-	language: "python",
-	category: "core",
-	async getFiles(
-		context: GeneratorContext<"python">,
-	): Promise<GeneratedFile[]> {
-		const { projectName } = context;
-		const safeName = projectName.replace(/-/g, "_");
+    id: "python-core",
+    name: "Python Core",
+    description: "Core Python project setup with uv",
+    language: "python",
+    category: "core",
+    async getFiles(
+        context: GeneratorContext<"python">,
+    ): Promise<GeneratedFile[]> {
+        const { projectName } = context;
+        const safeName = projectName.replace(/-/g, "_");
 
-		return [
-			{
-				path: "pyproject.toml",
-				content: `[project]
+        return [
+            {
+                path: "pyproject.toml",
+                content: `[project]
 name = "${projectName}"
 version = "0.1.0"
 description = ""
@@ -36,10 +36,10 @@ dev-dependencies = [
     "ruff>=0.8.0",
 ]
 `,
-			},
-			{
-				path: `${safeName}/__init__.py`,
-				content: `"""${projectName} - A Python project."""
+            },
+            {
+                path: `${safeName}/__init__.py`,
+                content: `"""${projectName} - A Python project."""
 
 __version__ = "0.1.0"
 
@@ -52,10 +52,10 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 `,
-			},
-			{
-				path: ".gitignore",
-				content: `__pycache__/
+            },
+            {
+                path: ".gitignore",
+                content: `__pycache__/
 *.py[cod]
 *$py.class
 *.so
@@ -84,10 +84,10 @@ ENV/
 htmlcov/
 .ruff_cache/
 `,
-			},
-			{
-				path: "README.md",
-				content: `# ${projectName}
+            },
+            {
+                path: "README.md",
+                content: `# ${projectName}
 
 ## Setup
 
@@ -114,7 +114,7 @@ uv run ruff check .
 uv run ruff format .
 \`\`\`
 `,
-			},
-		];
-	},
+            },
+        ];
+    },
 };

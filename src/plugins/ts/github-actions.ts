@@ -1,16 +1,16 @@
 import type { GeneratedFile, GeneratorContext, Plugin } from "../types.js";
 
 export const tsGithubActions: Plugin<"ts"> = {
-	id: "ts-github-actions",
-	name: "GitHub Actions",
-	description: "GitHub Actions CI/CD for TypeScript",
-	language: "ts",
-	category: "ci",
-	async getFiles(_context: GeneratorContext<"ts">): Promise<GeneratedFile[]> {
-		return [
-			{
-				path: ".github/workflows/ci.yml",
-				content: `name: CI
+    id: "ts-github-actions",
+    name: "GitHub Actions",
+    description: "GitHub Actions CI/CD for TypeScript",
+    language: "ts",
+    category: "ci",
+    async getFiles(_context: GeneratorContext<"ts">): Promise<GeneratedFile[]> {
+        return [
+            {
+                path: ".github/workflows/ci.yml",
+                content: `name: CI
 
 on:
   push:
@@ -48,7 +48,7 @@ jobs:
       - name: Build
         run: pnpm build
 `,
-			},
-		];
-	},
+            },
+        ];
+    },
 };

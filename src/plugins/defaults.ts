@@ -15,23 +15,23 @@ import { tsGithubActions } from "./ts/github-actions.js";
 import { tsVitest } from "./ts/vitest.js";
 
 export function registerDefaultPlugins(registry: PluginRegistry): void {
-	// TypeScript plugins
-	registry.register(tsCore);
-	registry.register(tsBiome);
-	registry.register(tsVitest);
-	registry.register(tsGithubActions);
-	registry.register(tsDevcontainer);
+    // TypeScript plugins
+    registry.register(tsCore);
+    registry.register(tsBiome);
+    registry.register(tsVitest);
+    registry.register(tsGithubActions);
+    registry.register(tsDevcontainer);
 
-	// Python plugins
-	registry.register(pythonCore);
-	registry.register(pythonRuff);
-	registry.register(pythonPytest);
-	registry.register(pythonGithubActions);
-	registry.register(pythonDevcontainer);
+    // Python plugins
+    registry.register(pythonCore);
+    registry.register(pythonRuff);
+    registry.register(pythonPytest);
+    registry.register(pythonGithubActions);
+    registry.register(pythonDevcontainer);
 
-	// Rust plugins
-	registry.register(rustCore);
-	registry.register(rustClippy);
-	registry.register(rustGithubActions);
-	registry.register(rustDevcontainer);
+    // Rust plugins
+    registry.register(rustCore);
+    registry.register(rustClippy);
+    registry.register(rustGithubActions);
+    registry.register(rustDevcontainer);
 }
