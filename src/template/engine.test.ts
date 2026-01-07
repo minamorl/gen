@@ -56,7 +56,7 @@ describe("TemplateEngine", () => {
 
     describe("addFilter", () => {
         it("should add custom filter", () => {
-            engine.addFilter("shout", (str: string) => str.toUpperCase());
+            engine.addFilter("shout", (str) => String(str).toUpperCase());
             const result = engine.renderString("{{ name | shout }}", {
                 name: "hello",
             });

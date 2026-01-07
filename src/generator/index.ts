@@ -22,6 +22,7 @@ export interface GeneratorOptions {
 export class Generator {
     private pluginRegistry: PluginRegistry;
     private presetRegistry: PresetRegistry;
+    private templateEngine: TemplateEngine;
 
     constructor() {
         this.pluginRegistry = new PluginRegistry();
