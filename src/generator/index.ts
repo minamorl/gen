@@ -10,7 +10,6 @@ import type {
     Plugin,
 } from "../plugins/types.js";
 import { registerDefaultPresets } from "../presets/defaults.js";
-import { TemplateEngine } from "../template/index.js";
 
 export interface GeneratorOptions {
     language: Language;
@@ -22,12 +21,10 @@ export interface GeneratorOptions {
 export class Generator {
     private pluginRegistry: PluginRegistry;
     private presetRegistry: PresetRegistry;
-    private templateEngine: TemplateEngine;
 
     constructor() {
         this.pluginRegistry = new PluginRegistry();
         this.presetRegistry = new PresetRegistry();
-        this.templateEngine = new TemplateEngine();
 
         registerDefaultPlugins(this.pluginRegistry);
         registerDefaultPresets(this.presetRegistry);
