@@ -1,0 +1,54 @@
+import type { GeneratedFile, GeneratorContext, Plugin } from "../types.js";
+
+export const rustGithubActions: Plugin<"rust"> = {
+	id: "rust-github-actions",
+	name: "GitHub Actions",
+	description: "GitHub Actions CI/CD for Rust",
+	language: "rust",
+	category: "ci",
+	async getFiles(_context: GeneratorContext<"rust">): Promise<GeneratedFile[]> {
+		return [
+			{
+				path: ".github/workflows/ci.yml",
+				content: `name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Check formatting
+        run: cargo fmt --all -- --check
+
+      - name: Clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Build
+        run: cargo build --verbose
+
+      - name: Test
+        run: cargo test --verbose
+`,
+			},
+		];
+	},
+};
